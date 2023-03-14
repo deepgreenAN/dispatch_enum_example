@@ -1,19 +1,22 @@
 fn main() {
     use enum_dispatch_examples::{PushPop, PushPopCollection, Queue, Stack};
 
-    let mut collection = PushPopCollection::<i32>::Stack(Stack::new());
-    collection.push(1);
-    collection.push(2);
-    collection.push(3);
+    let mut collections: Vec<PushPopCollection<i32>> = vec![
+        PushPopCollection::Stack(Stack::new()),
+        PushPopCollection::Queue(Queue::new()),
+    ];
 
-    collection.pop();
-    println!("stack: {collection:?}");
+    collections[0].push(1);
+    collections[0].push(2);
+    collections[0].push(3);
 
-    let mut collection = PushPopCollection::<i32>::Queue(Queue::new());
-    collection.push(1);
-    collection.push(2);
-    collection.push(3);
+    collections[0].pop();
+    println!("stack: {:?}", collections[0]);
 
-    collection.pop();
-    println!("queue: {collection:?}");
+    collections[1].push(1);
+    collections[1].push(2);
+    collections[1].push(3);
+
+    collections[1].pop();
+    println!("queue: {:?}", collections[1]);
 }
