@@ -15,4 +15,3 @@ cargo run --bin ambassador
 ```
 cargo run --bin trait_object
 ```
-チェック
